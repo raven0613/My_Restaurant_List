@@ -16,9 +16,25 @@ app.get('/' , (req , res) => {
 });
 
 //show頁面
-app.get("/restaurants/:id" , (req , res) => {
+app.get('/restaurants/:id' , (req , res) => {
   const filteredRestaurant = restaurantJson.results.find(item => item.id.toString() === req.params.id);
-  res.render("show" , {restaurant : filteredRestaurant});
+  res.render('show' , {restaurant : filteredRestaurant});
+ });
+ 
+//搜尋結果頁面
+app.get('/search' , (req , res) => {
+  let inputKeyword = req.query.keyword.replace(/\s*/g, "").toLowerCase();
+  let currentKeyword = req.query.keyword.replace(/\s*/g, "");
+
+  const filteredRestaurant = restaurantJson.results.filter(item =>
+    item.name.toLowerCase().includes(inputKeyword) ||
+    item.category.toLowerCase().includes(inputKeyword));
+
+  const noResultAlert = filteredRestaurant.length?
+    `- 搜尋餐廳或分類含「${currentKeyword}」 之結果共 ${filteredRestaurant.length} 筆 -` :
+    `- 查無餐廳或分類含「${currentKeyword}」 之結果 -`;
+  
+  res.render('index' , {restaurantList : filteredRestaurant , keyword : currentKeyword , alert : noResultAlert});
  });
  
 
