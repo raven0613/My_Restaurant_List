@@ -15,6 +15,12 @@ app.get('/' , (req , res) => {
   res.render('index' , {restaurantList : restaurantJson.results});
 });
 
+//show頁面
+app.get("/restaurants/:id" , (req , res) => {
+  const filteredRestaurant = restaurantJson.results.find(item => item.id.toString() === req.params.id);
+  res.render("show" , {restaurant : filteredRestaurant});
+ });
+ 
 
 app.listen(port , () => {
   console.log('server is starting with port ' + port);
