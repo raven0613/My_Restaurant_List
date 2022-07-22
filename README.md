@@ -15,9 +15,9 @@
 <li>前置作業：請先確認已安裝 git / node.js / npm</li>
 <br>
 <li>在terminal輸入以下文字，複製專案至本機資料夾中</li>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git clone https://github.com/raven0613/Restaurant_List.git"><pre class="notranslate"><code>git clone https://github.com/raven0613/Restaurant_List.git
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git clone https://github.com/raven0613/My_Restaurant_List.git"><pre class="notranslate"><code>git clone https://github.com/raven0613/My_Restaurant_List.git
 </code></pre></div>
-<li>※以下步驟請確認terminal的目前資料夾位置是在 Restaurant_List※</li>
+<li>※以下步驟請確認terminal的目前資料夾位置是在 My_Restaurant_List※</li>
 <br>
 <li>下載express.js</li>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm install express"><pre class="notranslate"><code>npm install express
