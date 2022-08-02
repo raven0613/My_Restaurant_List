@@ -9,6 +9,8 @@ const resaurantSchema = new Schema({
   category : { type: String , required: true },
   location : { type: String , required: true },
   phone : { type: String , required: true },
+  google_map : { type: String , required: true },
+  rating : { type: String , required: true },
   description : { type: String , required: false }
 });
 

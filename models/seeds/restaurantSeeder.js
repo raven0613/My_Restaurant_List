@@ -11,6 +11,8 @@ db.on('open' , () => {
         category : restaurantJson.results[i].category,
         location : restaurantJson.results[i].location,
         phone : restaurantJson.results[i].phone,
+        google_map : restaurantJson.results[i].google_map,
+        rating : restaurantJson.results[i].rating,
         description : restaurantJson.results[i].description
       }
     )
