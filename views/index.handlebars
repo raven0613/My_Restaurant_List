@@ -45,11 +45,11 @@
               </a>
             </div>
            
-          <div class="button-area">
-            <button class="edit">Edit</button>
-            <button class="detail">Detail</button>
-            <button class="delete">Delete</button>
-          </div>
+          <form action="/restaurant/{{ this._id }}?_method=DELETE" method="post">
+            <a href="./restaurant/{{ this._id }}/edit" class="edit">Edit</a>
+            <a href="./restaurant/{{ this._id }}" class="detail">Detail</a>
+            <button type="submit">Delete</button>
+          </form>
          </div>
        
 

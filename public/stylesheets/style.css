@@ -1,3 +1,7 @@
+ul {
+  list-style-type: none;
+}
+
 .badge {
   line-height: 1rem;
   font-size: 0.75rem;
