@@ -13,6 +13,20 @@ header {
   overflow: hidden;
 }
 
+.navbar{
+  button {
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border: none;
+    background: #4592af;
+    color: #e1f3ff;
+    &:hover{
+      background: #226089;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1)
+    }
+  }
+}
+
 .navbar .navbar-brand {
   color: #4592af;
 }
@@ -69,8 +83,11 @@ header {
   border-color: #ced4da;
 }
 
+
 .card {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 0.2rem;
 }
 
 .card img {
@@ -81,6 +98,37 @@ header {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.button-area{
+  padding: 0.3rem;
+  display: flex;
+  justify-content: flex-end;
+  button{
+    margin: 0.2rem;
+    height: 1.5rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.5rem;
+    border-radius: 0.75rem;
+    background: #d7dadd;
+    border: none;
+    line-height: 0.5rem;
+    color: #313f46;
+    &:hover {
+      color: #ddfbff;
+      background: #5891c0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1)
+    }
+  }
+  .delete{
+    background: #dd5050;
+    color: #ffe8e8;
+    &:hover {
+      color: #ffcece;
+      background: rgb(167, 36, 47);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1)
+    }
+  }
 }
 
 .restaurant-category {

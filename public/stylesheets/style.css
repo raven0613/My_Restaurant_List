@@ -12,6 +12,20 @@ header {
   overflow: hidden;
 }
 
+.navbar button {
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  background: #4592af;
+  color: #e1f3ff;
+}
+
+.navbar button:hover {
+  background: #226089;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
 .navbar .navbar-brand {
   color: #4592af;
 }
@@ -90,6 +104,8 @@ header {
 .card {
   -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 0.2rem;
 }
 
 .card img {
@@ -100,6 +116,47 @@ header {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.button-area {
+  padding: 0.3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.button-area button {
+  margin: 0.2rem;
+  height: 1.5rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.5rem;
+  border-radius: 0.75rem;
+  background: #d7dadd;
+  border: none;
+  line-height: 0.5rem;
+  color: #313f46;
+}
+
+.button-area button:hover {
+  color: #ddfbff;
+  background: #5891c0;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-area .delete {
+  background: #dd5050;
+  color: #ffe8e8;
+}
+
+.button-area .delete:hover {
+  color: #ffcece;
+  background: #a7242f;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .restaurant-category {
