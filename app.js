@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
+require('./config/mongoose');
+
+
 const port = 3000;
 const restaurantJson = require('./public/restaurant.json');
 
@@ -15,11 +18,13 @@ app.get('/' , (req , res) => {
   res.render('index' , {restaurantList : restaurantJson.results});
 });
 
+
 //show頁面
 app.get('/restaurants/:id' , (req , res) => {
   const filteredRestaurant = restaurantJson.results.find(item => item.id.toString() === req.params.id);
   res.render('show' , {restaurant : filteredRestaurant});
  });
+
  
 //搜尋結果頁面
 app.get('/search' , (req , res) => {
