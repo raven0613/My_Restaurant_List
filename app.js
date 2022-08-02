@@ -7,11 +7,15 @@ require('./config/mongoose');
 const port = 3000;
 const restaurantJson = require('./public/restaurant.json');
 
+
 app.engine('handlebars' , exphbs.engine({ defaultLayout : 'main' }));
 app.set('view engine' , 'handlebars');
 
 
 app.use(express.static('public'));
+
+
+
 
 //首頁
 app.get('/' , (req , res) => {
@@ -43,6 +47,9 @@ app.get('/search' , (req , res) => {
  });
  
 
+
+
+ 
 app.listen(port , () => {
   console.log('server is starting with port ' + port);
 });
