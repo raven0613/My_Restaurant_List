@@ -28,7 +28,7 @@ router.get('/search' , (req , res) => {
 
   Restaurant.find()
             .lean()
-
+            .sort({ _id : 'asc'})
             .then(restaurants => 
               filteredRestaurant = restaurants.filter(item =>
               item.name.toLowerCase().includes(inputKeyword) ||
