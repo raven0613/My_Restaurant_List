@@ -2,28 +2,38 @@ const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const User = require('../models/users');
-
+const flash = require('connect-flash');
 
 module.exports = app => {
   app.use(passport.initialize());
   app.use(passport.session());
 
 
-  passport.use(new localStrategy({ usernameField : 'email' } , (email , password , done) => {
+  passport.use(new localStrategy({ 
+    usernameField : 'email' , passReqToCallback : true } , 
+    (req , email , password , done) => {
+      console.log(req.session.messages)  
+
+    if (!email.length || !password.length) {
+      console.log(req.session.messages)
+      console.log('所有欄位都是必填')
+      req.flash('warning_msg' , '所有欄位都是必填');
+      return done(null , false , { message : '所有欄位都是必填'});
+    }
+
     User.findOne({ email })
         .then(user => {
           if(!user){
-            console.log('email is not registered')
-            return done(null , false)
+            req.flash('warning_msg' , 'email 或 密碼不正確');
+            return done(null , false);
           }
           return bcrypt
             .compare(password , user.password)
             .then(isMatched => {
               if(!isMatched){
-                console.log('email or password incorrect')
-                return done(null , false)
+                req.flash('warning_msg' , 'email 或 密碼不正確');
+                return done(null , false);
               }
-              console.log('login success')
               return done(null , user)
             })
             .catch(err => console.log(err))
