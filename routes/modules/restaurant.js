@@ -12,18 +12,21 @@ router.get('/new' , (req , res) => {
 //新增資料
 router.post('/' , (req , res) => {
   const {name , category , image , location , phone , google_map , rating , description} = req.body;
+  const userId = req.user._id;
+
   return Restaurant.create(
-    {name , category , image , location , phone , google_map , rating , description})
+    {name , category , image , location , phone , google_map , rating , description , userId})
                    .then(() => res.redirect('/'))
                    .catch(error => console.log(error))
 })
 
 //編輯特定資料
 router.put('/:id' , (req , res) => {
-  const id = req.params.id;
+  const _id = req.params.id;
+  const userId = req.user._id;
   const {name , category , image , location , phone , google_map , rating , description} = req.body;
 
-  return Restaurant.findById(id)
+  return Restaurant.findOne({ _id , userId })
                    .then(restaurants => {
                       restaurants.name = name;
                       restaurants.category = category;
@@ -35,14 +38,15 @@ router.put('/:id' , (req , res) => {
                       restaurants.description = description;
                       return restaurants.save();
                     })
-                    .then(() => res.redirect(`/restaurant/${id}`))
+                    .then(() => res.redirect(`/restaurants/${_id}`))
                     .catch(error => console.log(error))
 })
 
 //get編輯頁面
 router.get('/:id/edit' , (req , res) => {
-  const id = req.params.id;
-  return Restaurant.findById(id)
+  const _id = req.params.id;
+  const userId = req.user._id;
+  return Restaurant.findOne({ _id , userId })
                    .lean()
                    .then(restaurants => res.render('edit' , { restaurant : restaurants }))
                    .catch(error => console.log(error))
@@ -51,9 +55,10 @@ router.get('/:id/edit' , (req , res) => {
 
 //show特定頁面
 router.get('/:id' , (req , res) => {
-  const id = req.params.id;
+  const _id = req.params.id;
+  const userId = req.user._id;
 
-  return Restaurant.findById(id)
+  return Restaurant.findOne({ _id , userId })
                    .lean()
                    .then(restaurants => res.render('show' , {restaurant : restaurants}))
                    .catch(error => console.log(error))
@@ -62,8 +67,10 @@ router.get('/:id' , (req , res) => {
 
 //刪除特定資料
 router.delete('/:id' , (req , res) => {
-  const id = req.params.id;
-  return Restaurant.findById(id)
+  const _id = req.params.id;
+  const userId = req.user._id;
+
+  return Restaurant.findOne({ _id , userId })
                    .then(restaurants => restaurants.remove())
                    .then(() => res.redirect('/'))
                    .catch(error => console.log(error))

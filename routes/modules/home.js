@@ -1,11 +1,14 @@
 const express = require('express');
 const Restaurant = require('../../models/Restaurants');
+// const User = require('../../models/users');
 const router = express.Router();
 
 
 //首頁
 router.get('/' , (req , res) => {
-  Restaurant.find()
+  const userId = req.user._id;
+
+  Restaurant.find({ userId })
            .lean()
            .sort({ _id : 'asc'})
            .then(restaurants => res.render('index' , { restaurantList : restaurants }))
