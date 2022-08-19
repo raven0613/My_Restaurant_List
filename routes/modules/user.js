@@ -1,34 +1,18 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
+
 const router = express.Router();
 
 const User = require('../../models/users');
-const users = require('../../models/users');
+
 
 //登入
-//看email有沒有在資料庫裡
-//有的話就發一張憑證給用戶
-//沒有的話就說沒有email或密碼錯誤
-router.post('/login' , (req , res) => {
-  const { email , password } = req.body;
+router.post('/login' , passport.authenticate('local' , {
+  failureRedirect: '/users/login',
+  successRedirect: '/'
+}) )
 
-  users.findOne({ email })
-      .then(user => {
-        if(!user){
-          return console.log('email or password incorrect1')
-        }
-        return bcrypt
-          .compare(password , user.password)
-          .then(isMatched => {
-            if (isMatched) {
-               return console.log('login succeess!')
-            }
-            return console.log('email or password incorrect2')
-          })
-          .catch(err => console.log(err))
-      })
-      .catch(err => console.log(err))
-})
 
 //註冊
 //先看有沒有重複的email
@@ -66,6 +50,11 @@ router.get('/login' , (req , res) => {
 //進入註冊頁面
 router.get('/register' , (req , res) => {
   res.render('register');
+})
+
+router.get('/logout' , (req , res) => {
+  req.logout();
+  res.redirect('/users/login');
 })
 
 
