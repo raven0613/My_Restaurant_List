@@ -39,11 +39,11 @@
        {{#each restaurantList}}
        
          <div class="card mb-1">
-          <a href="/restaurant/{{ this._id }}" class="text-secondary">
+          <a href="/restaurants/{{ this._id }}" class="text-secondary">
             <img class="card-img-top" src="{{ this.image }}" alt="{{ this.name }}">
           </a>
             <div class="card-body p-3">
-              <a href="/restaurant/{{ this._id }}" class="text-secondary">
+              <a href="/restaurants/{{ this._id }}" class="text-secondary">
                 <h6 class="card-title mb-1">{{ this.name }}</h6>
     
                 <div class="restaurant-category mb-1">
@@ -57,9 +57,9 @@
               </a>
             </div>
            
-          <form action="/restaurant/{{ this._id }}?_method=DELETE" method="post">
-            <a href="./restaurant/{{ this._id }}/edit" class="edit">Edit</a>
-            <a href="./restaurant/{{ this._id }}" class="detail">Detail</a>
+          <form action="/restaurants/{{ this._id }}?_method=DELETE" method="post">
+            <a href="./restaurants/{{ this._id }}/edit" class="edit">Edit</a>
+            <a href="./restaurants/{{ this._id }}" class="detail">Detail</a>
             <button type="submit">Delete</button>
           </form>
          </div>
