@@ -2,6 +2,10 @@ const express = require('express');
 const session = require('express-session');
 const usePassport = require('./config/passport');
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const flash = require('connect-flash');
 const app = express();
 const exphbs = require('express-handlebars');
@@ -9,7 +13,7 @@ require('./config/mongoose');
 const routes = require('./routes');
 const methodOverride = require('method-override')
 
-const port = 3000;
+const port = process.env.PORT;
 
 
 
@@ -18,7 +22,7 @@ app.set('view engine' , 'handlebars');
 
 
 app.use(session({
-  secret: 'MyRestaurantSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }));

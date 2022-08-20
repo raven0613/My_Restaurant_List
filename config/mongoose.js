@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://alpha:camp@cluster0.ykx0l.mongodb.net/resaurant-list?retryWrites=true&w=majority' , { useNewUrlParser: true , useUnifiedTopology: true , useCreateIndex: true });
+mongoose.connect(process.env.MONGODB_URI_RESTAURANT , { useNewUrlParser: true , useUnifiedTopology: true , useCreateIndex: true });
 
 const db = mongoose.connection;
 

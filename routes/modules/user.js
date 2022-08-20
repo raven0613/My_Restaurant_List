@@ -11,6 +11,8 @@ const User = require('../../models/users');
 router.post('/login' , passport.authenticate('local' , {
   failureRedirect: '/users/login',
   failureMessage: true,
+  failureFlash: true,
+  failureFlash: 'warning_msg',
   successRedirect: '/'
 }) )
 
@@ -25,12 +27,10 @@ router.post('/register' , (req , res) => {
 
   if (!name || !email || !password || !confirmPassword) {
     console.log('所有欄位都是必填')
-    console.log(errors)
     errors.push({ message : '所有欄位都是必填' });
   }
   if (password !== confirmPassword) {
     console.log('密碼與確認密碼不相符')
-    console.log(errors)
     errors.push({ message : '密碼與確認密碼不相符' })
   }
 
@@ -39,7 +39,6 @@ router.post('/register' , (req , res) => {
         if (user) {
           errors.push({ message : '這個 email 已經註冊過了' })
           console.log('這個 email 已經註冊過了')
-          console.log(errors)
 
           return res.render('register' , {
             name , email , errors

@@ -1,5 +1,10 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const db = require('../../config/mongoose');
 const bcrypt = require('bcryptjs');
+
 
 const Restaurant = require('../Restaurants');
 const User = require('../../models/users')
