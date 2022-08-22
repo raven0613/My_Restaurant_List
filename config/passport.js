@@ -13,15 +13,7 @@ module.exports = app => {
   passport.use(new localStrategy({ 
     usernameField : 'email' , passReqToCallback : true } , 
     (req , email , password , done) => {
-      console.log(req.session.messages)  
-
-    if (!email || !password) {
-      console.log(req.session.messages)
-      console.log('所有欄位都是必填')
-      req.flash('warning_msg' , '所有欄位都是必填');
-      return done(null , false , { message : '所有欄位都是必填'});
-    }
-
+      
     User.findOne({ email })
         .then(user => {
           if(!user){

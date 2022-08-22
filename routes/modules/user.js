@@ -8,26 +8,30 @@ const User = require('../../models/users');
 
 
 //登入
-router.post('/login' , passport.authenticate('local' , {
+router.post('/login' , (req , res , next) => {
+  const {email , password} = req.body;
+  const errors = [];
+
+  if (!email || !password) {
+    errors.push({ message : '所有欄位都是必填' });
+    return res.render('login' , { email , errors })
+  }
+  return next();
+} ,
+ passport.authenticate('local' , {
   failureRedirect: '/users/login',
-  failureMessage: true,
-  failureFlash: true,
-  failureFlash: 'warning_msg',
   successRedirect: '/'
 }) )
 
 
 //註冊
-//先看有沒有重複的email 有沒有漏填  密碼有沒有一致
-//重複就導回login
-//沒有的話就create進DB 然後導回login 註冊完就登入?
 router.post('/register' , (req , res) => {
   const {name , email , password , confirmPassword} = req.body;
   const errors = [];
 
-  if (!name || !email || !password || !confirmPassword) {
-    console.log('所有欄位都是必填')
-    errors.push({ message : '所有欄位都是必填' });
+  if (!email || !password || !confirmPassword) {
+    console.log('請填入所有必填資料')
+    errors.push({ message : '請填入所有必填資料' });
   }
   if (password !== confirmPassword) {
     console.log('密碼與確認密碼不相符')
@@ -53,9 +57,11 @@ router.post('/register' , (req , res) => {
         return bcrypt
           .genSalt(10)
           .then(salt => bcrypt.hash(password , salt))
-          .then(hash => User.create({
-            name , email , password: hash
-          }))
+          .then(hash => {
+            const nameContainer = name? name : '小當家';
+            User.create({
+            name : nameContainer , email , password: hash
+          })})
           .then(() => res.redirect('/'))
           .catch(err => console.log(err))
       })
