@@ -30,11 +30,9 @@ router.post('/register' , (req , res) => {
   const errors = [];
 
   if (!email || !password || !confirmPassword) {
-    console.log('請填入所有必填資料')
     errors.push({ message : '請填入所有必填資料' });
   }
   if (password !== confirmPassword) {
-    console.log('密碼與確認密碼不相符')
     errors.push({ message : '密碼與確認密碼不相符' })
   }
 
@@ -42,7 +40,6 @@ router.post('/register' , (req , res) => {
       .then(user => {
         if (user) {
           errors.push({ message : '這個 email 已經註冊過了' })
-          console.log('這個 email 已經註冊過了')
 
           return res.render('register' , {
             name , email , errors

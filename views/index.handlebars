@@ -14,12 +14,12 @@
 
       <div class="sort">
         <label for="sort"></label>
-        <select name="sort" id="sort">
+        <select name="sort" id="sort" onChange="window.location.href=this.value">
           <option value="">sort</option>
-          <option value="asc"><a href="/">A-Z</a></option>
-          <option value="desc"><a href="/">Z-A</a></option>
-          <option value="sort-category"><a href="/">類別</a></option>
-          <option value="sort-location"><a href="/">地區</a></option>
+          <option value="sort/asc">A-Z</option>
+          <option value="sort/desc">Z-A</option>
+          <option value="sort/category">類別</option>
+          <option value="sort/location">地區</option>
         </select>
       </div>
 
@@ -31,7 +31,6 @@
 <!-- restaurant list -->
 <div class="container mt-5">
 
-<a class="create" href="/restaurants/new">Create</a>
  <p class="alert">{{ alert }}</p>
   <div class="row">
    <div class="col-md-8 col-12 mx-auto">
@@ -58,10 +57,10 @@
               </a>
             </div>
            
-          <form action="/restaurants/{{ this._id }}?_method=DELETE" method="post">
-            <a href="./restaurants/{{ this._id }}/edit" class="edit">Edit</a>
-            <a href="./restaurants/{{ this._id }}" class="detail">Detail</a>
-            <button type="submit">Delete</button>
+          <form action="/restaurants/{{ this._id }}?_method=DELETE" method="post" class="button-area">
+            <a href="./restaurants/{{ this._id }}/edit" class="edit button">Edit</a>
+            <a href="./restaurants/{{ this._id }}" class="detail button">Detail</a>
+            <button type="submit" class="delete button">Delete</button>
           </form>
          </div>
        

@@ -23,12 +23,14 @@
             <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
             {{#if isAuthenticated}} {{user.name}}的 {{/if}} 餐廳清單
         </a>
+        <div>
+          <a class="create btn btn-primary" href="/restaurants/new">Create</a>
         {{#if isAuthenticated}} 
-          <a class="logout" href="/users/logout">logout</a>
+          <a class="logout btn btn-info" href="/users/logout">logout</a>
         {{else}}
-          <a class="login" href="/users/login">login</a>
-         {{/if}}
-         
+          <a class="login btn btn-info" href="/users/login">login</a>
+        {{/if}}
+        </div>
       </div>
     </nav>
 

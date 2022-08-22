@@ -122,38 +122,50 @@ header {
   white-space: nowrap;
 }
 
+a {
+  text-decoration: none;
+}
+
+.card-img-top {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .button-area {
-  padding: 0.3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.button-area button {
+.button-area .button {
   margin: 0.2rem;
   height: 1.5rem;
-  padding: 0.3rem 0.8rem;
+  padding: 0 0.6rem;
   font-size: 0.5rem;
   border-radius: 0.75rem;
   background: #d7dadd;
   border: none;
-  line-height: 0.5rem;
+  line-height: 1.5rem;
   color: #313f46;
+  -webkit-transition: 0.15s ease-in;
+  transition: 0.15s ease-in;
 }
 
-.button-area button:hover {
-  color: #ddfbff;
-  background: #5891c0;
+.button-area .button:hover {
+  color: #f1fdff;
+  background: #1e80ff;
   -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .button-area .delete {
-  background: #dd5050;
-  color: #ffe8e8;
+  background: #ee7575;
+  color: #fff6f6;
 }
 
 .button-area .delete:hover {
@@ -175,6 +187,15 @@ header {
   text-align: center;
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.input {
+  width: 100%;
+  height: 2.2rem;
+}
+
+textarea {
+  width: 100%;
 }
 
 @media screen and (max-width: 992px) {

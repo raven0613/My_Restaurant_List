@@ -105,29 +105,38 @@ header {
   white-space: nowrap;
 }
 
+a {
+  text-decoration: none;
+}
+
+.card-img-top {
+  object-fit: cover;
+}
+
 .button-area{
-  padding: 0.3rem;
   display: flex;
   justify-content: flex-end;
-  button{
+  flex-wrap: wrap;
+  .button{
     margin: 0.2rem;
     height: 1.5rem;
-    padding: 0.3rem 0.8rem;
+    padding: 0 0.6rem;
     font-size: 0.5rem;
     border-radius: 0.75rem;
     background: #d7dadd;
     border: none;
-    line-height: 0.5rem;
+    line-height: 1.5rem;
     color: #313f46;
+    transition: 0.15s ease-in;
     &:hover {
-      color: #ddfbff;
-      background: #5891c0;
+      color: #f1fdff;
+      background: #1e80ff;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1)
     }
   }
   .delete{
-    background: #dd5050;
-    color: #ffe8e8;
+    background: #ee7575;
+    color: #fff6f6;
     &:hover {
       color: #ffcece;
       background: rgb(167, 36, 47);
@@ -150,6 +159,13 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.input {
+  width: 100%;
+  height: 2.2rem;
+}
+textarea {
+  width: 100%;
+}
 
 @media screen and (max-width: 992px) {
 
