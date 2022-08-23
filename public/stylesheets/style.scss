@@ -166,6 +166,14 @@ a {
 textarea {
   width: 100%;
 }
+select {
+  width: 5rem;
+  height: 100%;
+  padding-left: 0.5rem;
+  border: solid 1px #ced4da;
+  border-radius: 5px 0 0 5px;
+  color: #6c757d;
+}
 
 @media screen and (max-width: 992px) {
 
